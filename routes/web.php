@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::post('/register', [RegisterUserController::class, 'connectToMercadoPago']);
+Route::get('/mp-callback', [RegisterUserController::class, 'handleOAuthCallback']);
